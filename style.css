@@ -1,0 +1,60 @@
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+/* Menu */
+header {
+    background-color: #0f172a;
+    padding: 10px 0;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin: 0 15px;
+}
+
+.menu li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu li a:hover {
+    color: #38bdf8;
+}
+
+/* Seções */
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+section:nth-child(even) {
+    background-color: #e2e8f0;
+}
+
+/* Botões */
+button {
+    padding: 10px 20px;
+    background-color: #38bdf8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0ea5e9;
+}

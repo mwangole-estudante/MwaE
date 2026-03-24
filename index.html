@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudante Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Menu de navegação -->
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#jogo">Jogo Educativo</a></li>
+                <li><a href="#loja">Loja do Estudante</a></li>
+                <li><a href="#estatistica">Estatísticas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Página Inicial -->
+    <section id="inicio">
+        <h1>Bem-vindo ao Estudante Online</h1>
+        <p>Aqui você encontra informações de estudo, publicidade de cursos e muito mais!</p>
+    </section>
+
+    <!-- Cursos -->
+    <section id="cursos">
+        <h2>Cursos</h2>
+        <ul>
+            <li>Matemática</li>
+            <li>Português</li>
+            <li>Ciências</li>
+            <li>Informática</li>
+        </ul>
+    </section>
+
+    <!-- Jogo Educativo -->
+    <section id="jogo">
+        <h2>Jogo Educativo</h2>
+        <p>Teste seus conhecimentos com nossos jogos interativos!</p>
+        <button onclick="alert('Jogo em construção!')">Iniciar Jogo</button>
+    </section>
+
+    <!-- Loja do Estudante -->
+    <section id="loja">
+        <h2>Loja do Estudante</h2>
+        <ul>
+            <li>Matérias Didáticas</li>
+            <li>Cadernos</li>
+            <li>Canetas</li>
+            <li>Livros</li>
+        </ul>
+    </section>
+
+    <!-- Estatísticas do usuário -->
+    <section id="estatistica">
+        <h2>Estatísticas do Usuário</h2>
+        <p>Pontos de estudo: <span id="pontos">0</span></p>
+        <button onclick="adicionarPonto()">Adicionar Ponto</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

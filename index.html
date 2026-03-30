@@ -16,6 +16,7 @@
                 <li><a href="#cursos" onclick="mostrarSecao('cursos')">Cursos</a></li>
                 <li><a href="#jogo" onclick="mostrarSecao('jogo')">Jogo Educativo</a></li>
                 <li><a href="#loja" onclick="mostrarSecao('loja')">Loja do Estudante</a></li>
+                <li><a href="#" onclick="mostrarSecao('biblioteca')">Biblioteca</a></li>
                 <li><a href="#estatistica" onclick="mostrarSecao('estatistica')">Estatísticas</a></li>
             </ul>
         </nav>
@@ -63,6 +64,55 @@
         <p>Pontos de estudo: <span id="pontos">0</span></p>
         <button onclick="adicionarPonto()">Adicionar Ponto</button>
     </section>
+    
+    <!-- Biblioteca-->
+    <section id="biblioteca" style="display: none;">
+    <div class="biblioteca-header">
+        <h2>📚 Biblioteca MwaE</h2>
+        <p>Encontra aqui manuais, provas e livros para o teu sucesso escolar.</p>
+    </div>
+
+    <div class="biblioteca-grid">
+        <div class="livro-card">
+            <div class="capa-fake">PDF</div>
+            <h3>Matemática - 12ª Classe</h3>
+            <p>Preparação para Exames de Acesso.</p>
+            <a href="#" class="btn-baixar">Baixar Manual</a>
+        </div>
+
+        <div class="livro-card">
+            <div class="capa-fake">PDF</div>
+            <h3>Física - 11ª Classe</h3>
+            <p>Resumos e exercícios resolvidos.</p>
+            <a href="#" class="btn-baixar">Baixar Manual</a>
+        </div>
+    </div>
+</section>
+    
+    <!-- Rodapé -->
+    <footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Siga-nos</h4>
+            <div class="social-links">
+                <a href="https://www.facebook.com/MwangoleEstudante" target="_blank">Facebook: Mwangolé Estudante</a>
+                <a href="https://www.tiktok.com/@mwangole.estudante" target="_blank">TikTok</a>
+                <a href="https://www.instagram.com/mwangole.estudante?igsh=MWUyMzMxbnlrMzZvcw==" target="_blank">Instagram</a>
+                <a href="https://www.youtube.com/@MwangoléEstudante" target="_blank">YouTube</a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h4>Contactos</h4>
+            <a href="https://wa.me/244938063174" target="_blank">WhatsApp: (+244) 938063174</a>
+            <p>E-mail: mwangoleestudante@gmail.com</p>
+            <p>Tel: (+244) 938063174</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Mwangolé Estudante. Todos os direitos reservados.</p>
+    </div>
+</footer>
 
     <script src="script.js"></script>
 </body>

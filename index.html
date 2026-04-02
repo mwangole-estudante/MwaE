@@ -71,21 +71,32 @@
     <div class="biblioteca-header">
         <h2>📚 Biblioteca MwaE</h2>
         <p>Encontra aqui manuais, provas e livros para o teu sucesso escolar.</p>
+        <div class="pesquisa-biblioteca">
+          <form onsubmit="event.preventDefault();">
+            <input type="text" id="inputPesquisa" placeholder="Pesquisar por título, classe ou autor..." enterkeyhint="search">
+        </form>
     </div>
-
     <div class="biblioteca-grid">
-        <div class="livro-card">
-            <div class="capa-fake">PDF</div>
-            <h3>Matemática - 12ª Classe</h3>
-            <p>Preparação para Exames de Acesso.</p>
-            <a href="#" class="btn-baixar">Baixar Manual</a>
+      
+        <div class="livro-card"
+        data-titulo="Lingua Portuguesa" 
+     data-classe="4 4ª quarta" 
+     data-autor="Mayamba editora">
+            <div class="capa-fake">4 Classe</div>
+            <h3>Matemática - 4ª Classe</h3>
+            <p>Mayamba editora</p>
+            <a href="https://drive.google.com/uc?export=download&id=1uC0p2EZS5_cApwQ1bxXuwSCGoBhwNU5-" class="btn-baixar">Baixar Manual</a>
         </div>
-
-        <div class="livro-card">
-            <div class="capa-fake">PDF</div>
-            <h3>Física - 11ª Classe</h3>
-            <p>Resumos e exercícios resolvidos.</p>
-            <a href="#" class="btn-baixar">Baixar Manual</a>
+        
+        <div class="livro-card" 
+     data-titulo="Lingua Portuguesa" 
+     data-classe="10 10ª decima" 
+     data-autor="Porto Editora">
+    
+    <div class="capa-fake">10ª Classe</div>
+    <h3>Língua Portuguesa</h3>
+    <p>Porto Editora</p>
+    <a href="https://drive.google.com/uc?export=download&id=1moevgCP5odOiwtp0oMy1VPZ4Yp_s14Bc" class="btn-baixar">Baixar Manual</a>
         </div>
     </div>
 </section>

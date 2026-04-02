@@ -33,3 +33,30 @@ function mostrarSecao(id) {
         window.scrollTo(0, 0);
     }
 }
+
+// Seleciona a barra de pesquisa e todos os livros da biblioteca
+const barraPesquisa = document.getElementById('inputPesquisa');
+const livros = document.querySelectorAll('.livro-card');
+
+// Ouve o que o usuário digita
+barraPesquisa.addEventListener('input', function() {
+    const termoBusca = barraPesquisa.value.toLowerCase(); // O que foi digitado (em minúsculas)
+
+    livros.forEach(livro => {
+        // Pega o conteúdo do data-class que adicionamos no HTML
+        const infoLivro = livro.getAttribute('data-class').toLowerCase();
+        
+        // Se o termo pesquisado estiver dentro da info do livro, ele aparece
+        if (infoLivro.includes(termoBusca)) {
+            livro.style.display = "block"; // Mostra o livro
+        } else {
+            livro.style.display = "none";  // Esconde o livro
+        }
+    });
+});
+// Faz com que o Enter feche o teclado no telemóvel
+barraPesquisa.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        barraPesquisa.blur(); // Tira o foco da barra e esconde o teclado
+    }
+});

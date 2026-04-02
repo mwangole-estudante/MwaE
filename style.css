@@ -208,3 +208,31 @@ footer {
     font-size: 12px;
     color: #888;
 }
+/*aba de pesquisa*/
+/* Estilização da Barra de Pesquisa da Biblioteca */
+.pesquisa-biblioteca {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 500px; /* Não fica demasiado larga em tablets/PC */
+    text-align: center;
+}
+
+#inputPesquisa {
+    width: 90%;
+    max-width: 400px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: 2px solid #ffcc00; /* Cor inicial */
+    border-radius: 25px;    /* Formato arredondado */
+    outline: none;
+    transition: all 0.3s ease; /* Suaviza a mudança de cor */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+#inputPesquisa:focus {
+    border-color: #ffcc00; /* O Amarelo do MwaE quando clicas */
+    box-shadow: 0 4px 10px rgba(255, 204, 0, 0.2);
+    transform: translateY(-2px); /* Pequeno efeito de levitação */
+}

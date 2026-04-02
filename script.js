@@ -34,29 +34,26 @@ function mostrarSecao(id) {
     }
 }
 
-// Seleciona a barra de pesquisa e todos os livros da biblioteca
+// Seleciona a barra de pesquisa
 const barraPesquisa = document.getElementById('inputPesquisa');
-const livros = document.querySelectorAll('.livro-card');
 
-// Ouve o que o usuário digita
 barraPesquisa.addEventListener('input', function() {
-    const termoBusca = barraPesquisa.value.toLowerCase(); // O que foi digitado (em minúsculas)
+    const termoBusca = barraPesquisa.value.toLowerCase().trim();
+    const livros = document.querySelectorAll('.livro-card');
 
     livros.forEach(livro => {
-        // Pega o conteúdo do data-class que adicionamos no HTML
-        const infoLivro = livro.getAttribute('data-class').toLowerCase();
+        // Puxamos todas as informações das etiquetas que criaste
+        const titulo = livro.getAttribute('data-titulo').toLowerCase();
+        const classe = livro.getAttribute('data-classe').toLowerCase();
+        const autor  = livro.getAttribute('data-autor').toLowerCase();
         
-        // Se o termo pesquisado estiver dentro da info do livro, ele aparece
-        if (infoLivro.includes(termoBusca)) {
+        // Juntamos tudo para o filtro procurar em qualquer uma delas
+        const informacaoCompleta = `${titulo} ${classe} ${autor}`;
+
+        if (informacaoCompleta.includes(termoBusca)) {
             livro.style.display = "block"; // Mostra o livro
         } else {
             livro.style.display = "none";  // Esconde o livro
         }
     });
-});
-// Faz com que o Enter feche o teclado no telemóvel
-barraPesquisa.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        barraPesquisa.blur(); // Tira o foco da barra e esconde o teclado
-    }
 });

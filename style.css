@@ -240,12 +240,16 @@ footer {
 /*capa do livro*/
 /* Estilo para as capas dos livros */
 .capa-livro {
-    width: 100%;             /* Garante que a largura se ajuste ao card */
-    height: 280px;           /* Define uma altura fixa para alinhar todos os livros */
-    object-fit: cover;       /* Corta a imagem elegantemente para preencher o espaço sem esticar */
-    border-radius: 8px 8px 0 0; /* Arredonda apenas os cantos de cima */
-    display: block;          /* Remove espaços em branco indesejados abaixo da imagem */
-    margin-bottom: 15px;     /* Afasta a imagem do título do livro */
+    width: 80px;
+    height: 110px;
+    background: #000;
+    color: #fff;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-left: 5px solid #ff0000;
 }
 
 /* Ajuste no card para conter a imagem */

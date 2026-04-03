@@ -236,3 +236,22 @@ footer {
     box-shadow: 0 4px 10px rgba(255, 204, 0, 0.2);
     transform: translateY(-2px); /* Pequeno efeito de levitação */
 }
+
+/*capa do livro*/
+/* Estilo para as capas dos livros */
+.capa-livro {
+    width: 100%;             /* Garante que a largura se ajuste ao card */
+    height: 280px;           /* Define uma altura fixa para alinhar todos os livros */
+    object-fit: cover;       /* Corta a imagem elegantemente para preencher o espaço sem esticar */
+    border-radius: 8px 8px 0 0; /* Arredonda apenas os cantos de cima */
+    display: block;          /* Remove espaços em branco indesejados abaixo da imagem */
+    margin-bottom: 15px;     /* Afasta a imagem do título do livro */
+}
+
+/* Ajuste no card para conter a imagem */
+.livro-card {
+    overflow: hidden;        /* Garante que a imagem não saia fora das bordas do card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

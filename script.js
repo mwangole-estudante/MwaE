@@ -124,9 +124,6 @@ function carregarBiblioteca() {
             <a href="${livro.link}" class="btn-baixar">Baixar PDF</a>
         </div>
     `).join('');
-}
-// Inicia a função assim que o site carrega
-window.onload = carregarBiblioteca;
 
 // Seleciona a barra de pesquisa
 const barraPesquisa = document.getElementById('inputPesquisa');
@@ -151,3 +148,7 @@ barraPesquisa.addEventListener('input', function() {
         }
     });
 });
+document.getElementById('total-livros').innerText = biblioteca.length;
+}
+// Inicia a função assim que o site carrega
+window.onload = carregarBiblioteca;

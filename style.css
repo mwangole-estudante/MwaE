@@ -239,21 +239,18 @@ footer {
 
 /*capa do livro*/
 /* Estilo para as capas dos livros */
+/* 1. O CARD (O BALDE) */
 .livro-card {
-    width: 220px;          /* O card deixa de ser elástico e fixa neste tamanho */
-    height: 420px;         /* Todos os cards ficam com a mesma altura total */
+    width: 200px;           /* LARGURA FIXA: O card não cresce mais que isto */
+    height: 250px;          /* ALTURA FIXA: Para todos os livros ficarem alinhados */
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 15px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.capa-livro {
-    width: 100%;           /* A imagem obedece aos 220px do card */
-    height: 250px;         /* A imagem para de esticar o card para baixo */
-    object-fit: contain;   /* Garante que a capa apareça toda sem distorcer */
-    background-color: #f0f0f0; /* Fundo cinza para preencher espaços vazios da foto */
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;       /* CORTA qualquer coisa que tente explodir para fora */
+    text-align: center;
 }

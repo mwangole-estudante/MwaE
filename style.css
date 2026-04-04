@@ -240,17 +240,47 @@ footer {
 /*capa do livro*/
 /* Estilo para as capas dos livros */
 /* 1. O CARD (O BALDE) */
+.livro-card h3 {
+    font-size: 1.1rem;      /* Diminui o título do livro */
+    margin: 5px 0;
+    line-height: 1.2;       /* Deixa as linhas mais juntinhas */
+}
+
+.livro-card p {
+    font-size: 0.9rem;      /* Diminui o texto da disciplina/classe */
+    color: #666;
+    margin-bottom: 10px;
+}
 .livro-card {
-    width: 200px;           /* LARGURA FIXA: O card não cresce mais que isto */
-    height: 250px;          /* ALTURA FIXA: Para todos os livros ficarem alinhados */
-    background: #fff;
-    border-radius: 12px;
-    padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    overflow: hidden;       /* CORTA qualquer coisa que tente explodir para fora */
-    text-align: center;
+    justify-content: space-between; 
+    width: 180px;                   /* ADICIONA ESTA LINHA: controla a largura */
+    height: 250px;                  /* Ajusta a altura conforme o teu gosto */
+    padding: 15px;
+    background: #fff;               /* Garante que o fundo é branco */
+    border-radius: 10px;            /* Deixa os cantos arredondados */
+    margin: 10px auto;              /* Centraliza o card no ecrã */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Dá um efeito de sombra porreiro */
+    align-items:center
+}
+
+.btn-baixar {
+    width: 60%;
+    padding: 10px;
+    font-size: 0.9rem;
+    margin-top: auto;      /* Mantém o botão no fundo */
+    margin-left: auto;     /* Empurra da esquerda para o centro */
+    margin-right: auto;    /* Empurra da direita para o centro */
+    display: block;        /* Garante que as margens funcionem corretamente */
+}
+.capa-livro {
+    display: block;        /* Garante que a imagem se comporta como um bloco */
+    margin-left: auto;     /* Empurra da esquerda para o centro */
+    margin-right: auto;    /* Empurra da direita para o centro */
+    
+    /* Mantém as tuas outras configurações */
+    max-width: 100%; 
+    height: 250px; 
+    object-fit: contain;
 }

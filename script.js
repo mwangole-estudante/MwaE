@@ -208,7 +208,12 @@ function carregarBiblioteca() {
         </button>
         
     </div>
-`).join('');
+`).join('')
+biblioteca.forEach(livro => {
+    if (localStorage.getItem('clique_' + livro.id)) {
+        atualizarBotaoParaVerde(livro.id);
+    }
+});;
 
 // Seleciona a barra de pesquisa
 const barraPesquisa = document.getElementById('inputPesquisa');
@@ -239,21 +244,39 @@ document.getElementById('total-livros').innerText = biblioteca.length;
 window.onload = carregarBiblioteca;
 
 //botao para Baixar
-function baixarEReencaminhar(link, idLivro) {
-    // 1. Abre a publicidade (Sempre permitido no 1º clique)
-    const publicidade = "https://rzekl.com/c/1e8d1144946b7f02e05e16525dc3e8/?ulp=https%3A%2F%2Fa.aliexpress.com%2F_EHQU8ay";
-    window.open(publicidade, '_blank');
+function baixarEReencaminhar(urlLivro, idLivro) {
+    // 1. Verificar se o utilizador já clicou na publicidade nos últimos 10 minutos
+    const jaClicou = localStorage.getItem('clique_' + idLivro);
 
-    // 2. Localiza o botão que foi clicado usando o ID do livro
+    if (!jaClicou) {
+        // --- PRIMEIRO CLIQUE (Abrir Publicidade) ---
+        const publicidade = "https://rzekl.com/c/1e8d1144946b7f02e05e16525dc3e8/?ulp=https%3A%2F%2Fa.aliexpress.com%2F_EHQU8ay";
+        window.open(publicidade, '_blank');
+
+        // Guarda na memória que ele já clicou (timestamp para expirar depois)
+        localStorage.setItem('clique_' + idLivro, Date.now());
+
+        // Atualiza o botão visualmente agora (caso não reinicie)
+        atualizarBotaoParaVerde(idLivro);
+        
+        // Se a página reiniciar quando ele voltar, a função 'carregarBiblioteca' 
+        // precisará de um pequeno ajuste que faremos a seguir.
+    } else {
+        // --- SEGUNDO CLIQUE (Download Direto) ---
+        window.location.href = urlLivro;
+
+        // Opcional: Limpar a memória após o download para ele poder baixar de novo outro dia
+        localStorage.removeItem('clique_' + idLivro);
+    }
+}
+
+// Função auxiliar para mudar a cor do botão
+function atualizarBotaoParaVerde(idLivro) {
     const card = document.querySelector(`[data-id="${idLivro}"]`);
-    const botao = card.querySelector('.btn-baixar');
-
-    // 3. Transforma o botão para o 2º passo
-    botao.innerHTML = "✅ Clica aqui para Baixar";
-    botao.style.backgroundColor = "#28a745"; // Muda para verde (sucesso)
-    
-    // 4. Muda o que o botão faz no próximo clique
-    botao.onclick = function() {
-        window.location.href = link;
-    };
+    if (card) {
+        const botao = card.querySelector('.btn-baixar');
+        botao.innerHTML = "✅ Confirmar Download";
+        botao.style.backgroundColor = "#28a745";
+        botao.style.color = "white";
+    }
 }

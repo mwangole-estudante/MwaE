@@ -55,7 +55,7 @@ const biblioteca = [
     { 
         id: "edmeio-01", 
         classe: "1ª Classe", 
-        titulo: "Língua Portuguesa", 
+        titulo: "Estudo do Meio", 
         img: "img/edmeio1classe.jpg", 
         link: "https://drive.google.com/uc?export=download&id=1-B3XFabzjMVD2zMexZTGyNBteGdGRq_6",
         missao: "Explorador de Letras",
@@ -180,6 +180,15 @@ const biblioteca = [
     },
     // Podes adicionar mais 100 livros aqui apenas copiando este bloco { ... },
 ];
+function atualizarBotaoParaVerde(idLivro) {
+    const card = document.querySelector(`[data-id="${idLivro}"]`);
+    if (card) {
+        const botao = card.querySelector('.btn-baixar');
+        botao.innerHTML = "✅ Confirmar Download";
+        botao.style.backgroundColor = "#28a745";
+        botao.style.color = "white";
+    }
+}
 // ========================================
 // 2. MOTOR DE RENDERIZAÇÃO (Lógica)
 // ========================================
@@ -213,7 +222,8 @@ biblioteca.forEach(livro => {
     if (localStorage.getItem('clique_' + livro.id)) {
         atualizarBotaoParaVerde(livro.id);
     }
-});;
+});
+;
 
 // Seleciona a barra de pesquisa
 const barraPesquisa = document.getElementById('inputPesquisa');
@@ -245,38 +255,29 @@ window.onload = carregarBiblioteca;
 
 //botao para Baixar
 function baixarEReencaminhar(urlLivro, idLivro) {
-    // 1. Verificar se o utilizador já clicou na publicidade nos últimos 10 minutos
     const jaClicou = localStorage.getItem('clique_' + idLivro);
 
     if (!jaClicou) {
-        // --- PRIMEIRO CLIQUE (Abrir Publicidade) ---
+        // --- PRIMEIRO CLIQUE (Publicidade) ---
         const publicidade = "https://rzekl.com/c/1e8d1144946b7f02e05e16525dc3e8/?ulp=https%3A%2F%2Fa.aliexpress.com%2F_EHQU8ay";
         window.open(publicidade, '_blank');
-
-        // Guarda na memória que ele já clicou (timestamp para expirar depois)
         localStorage.setItem('clique_' + idLivro, Date.now());
-
-        // Atualiza o botão visualmente agora (caso não reinicie)
         atualizarBotaoParaVerde(idLivro);
-        
-        // Se a página reiniciar quando ele voltar, a função 'carregarBiblioteca' 
-        // precisará de um pequeno ajuste que faremos a seguir.
     } else {
-        // --- SEGUNDO CLIQUE (Download Direto) ---
-        window.location.href = urlLivro;
+        // --- SEGUNDO CLIQUE (Download Forçado) ---
+        const linkInvisivel = document.createElement('a');
+        linkInvisivel.href = urlLivro;
+        
+        // O atributo 'download' tenta forçar o download, mas o Drive pode ignorar.
+        // O segredo está no target '_blank' para alguns telemóveis.
+        linkInvisivel.setAttribute('download', ''); 
+        linkInvisivel.target = '_blank'; 
+        
+        document.body.appendChild(linkInvisivel);
+        linkInvisivel.click();
+        document.body.removeChild(linkInvisivel);
 
-        // Opcional: Limpar a memória após o download para ele poder baixar de novo outro dia
-        localStorage.removeItem('clique_' + idLivro);
-    }
-}
-
-// Função auxiliar para mudar a cor do botão
-function atualizarBotaoParaVerde(idLivro) {
-    const card = document.querySelector(`[data-id="${idLivro}"]`);
-    if (card) {
-        const botao = card.querySelector('.btn-baixar');
-        botao.innerHTML = "✅ Confirmar Download";
-        botao.style.backgroundColor = "#28a745";
-        botao.style.color = "white";
+        // Opcional: Limpar após baixar para ele poder repetir o processo no futuro
+        // localStorage.removeItem('clique_' + idLivro);
     }
 }

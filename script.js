@@ -189,19 +189,23 @@ function carregarBiblioteca() {
     if (!contentor) return;
 
     contentor.innerHTML = biblioteca.map(livro => `
-        <div class="livro-card" 
-             data-id="${livro.id}" 
-             data-titulo="${livro.titulo}" 
-             data-autor="${livro.autor}" 
-             data-classe="${livro.classe}">
-            
-            <img src="${livro.img}" class="capa-livro" alt="${livro.titulo}">
-            <div class="info-livro">
-                <h3>${livro.titulo}</h3>
-                <p>Autor: ${livro.autor}</p>
-                <small> ${livro.classe}</small>
-                </div>
-        <button onclick="baixarEReencaminhar('${livro.link}')" class="btn-baixar">Baixar PDF</button>
+    <div class="livro-card" 
+         data-id="${livro.id}" 
+         data-titulo="${livro.titulo}" 
+         data-autor="${livro.autor}" 
+         data-classe="${livro.classe}">
+        
+        <img src="${livro.img}" class="capa-livro" alt="${livro.titulo}">
+        
+        <div class="info-livro">
+            <h3>${livro.titulo}</h3>
+            <p>Autor: ${livro.autor}</p>
+            <small>${livro.classe}</small>
+        </div>
+
+        <button onclick="baixarEReencaminhar('${livro.link}', '${livro.id}')" class="btn-baixar">
+            Baixar PDF
+        </button>
         
     </div>
 `).join('');
@@ -235,17 +239,21 @@ document.getElementById('total-livros').innerText = biblioteca.length;
 window.onload = carregarBiblioteca;
 
 //botao para Baixar
-function baixarEReencaminhar(urlLivro) {
-    // 1. Abre a publicidade numa nova aba
-    const linkPublicidade = "https://rzekl.com/c/1e8d1144946b7f02e05e16525dc3e8/?ulp=https%3A%2F%2Fa.aliexpress.com%2F_EHQU8ay";
-    window.open(linkPublicidade, '_blank');
+function baixarEReencaminhar(link, idLivro) {
+    // 1. Abre a publicidade (Sempre permitido no 1º clique)
+    const publicidade = "https://rzekl.com/c/1e8d1144946b7f02e05e16525dc3e8/?ulp=https%3A%2F%2Fa.aliexpress.com%2F_EHQU8ay";
+    window.open(publicidade, '_blank');
 
-    // 2. Criar um link temporário que força o download
-    const linkParaDownload = document.createElement('a');
-    linkParaDownload.href = urlLivro;
-    linkParaDownload.target = "_blank"; // Abre o PDF numa nova aba ou força download
+    // 2. Localiza o botão que foi clicado usando o ID do livro
+    const card = document.querySelector(`[data-id="${idLivro}"]`);
+    const botao = card.querySelector('.btn-baixar');
+
+    // 3. Transforma o botão para o 2º passo
+    botao.innerHTML = "✅ Clica aqui para Baixar";
+    botao.style.backgroundColor = "#28a745"; // Muda para verde (sucesso)
     
-    setTimeout(() => {
-        linkParaDownload.click();
-    }, 3000); // Dá 1 segundo de intervalo para o navegador não bloquear
+    // 4. Muda o que o botão faz no próximo clique
+    botao.onclick = function() {
+        window.location.href = link;
+    };
 }

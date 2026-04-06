@@ -219,10 +219,16 @@ function carregarBiblioteca() {
     </div>
 `).join('')
 biblioteca.forEach(livro => {
-    if (localStorage.getItem('clique_' + livro.id)) {
-        atualizarBotaoParaVerde(livro.id);}
-});
-;
+        const registro = localStorage.getItem('clique_' + livro.id);
+        const tempoExpira = 30 * 60 * 1000;
+        
+        // Só pinta de verde se o clique ainda estiver dentro do prazo de 30min
+        if (registro && (Date.now() - registro < tempoExpira)) {
+            atualizarBotaoParaVerde(livro.id);
+        } else {
+            localStorage.removeItem('clique_' + livro.id); // Limpa o que já expirou
+        }
+    });
 
 // Seleciona a barra de pesquisa
 const barraPesquisa = document.getElementById('inputPesquisa');
@@ -249,26 +255,43 @@ barraPesquisa.addEventListener('input', function() {
 });
 document.getElementById('total-livros').innerText = biblioteca.length;
 }
+
 // Inicia a função assim que o site carrega
 window.onload = carregarBiblioteca;
 
 // Botão para Baixar
 function baixarEReencaminhar(urlLivro, idLivro) {
-    const jaClicou = localStorage.getItem('clique_' + idLivro);
+    const tempoExpira = 30 * 60 * 1000; // 30 minutos em milisegundos
+    const registroClique = localStorage.getItem('clique_' + idLivro);
+    const agora = Date.now();
 
-    if (!jaClicou) {
+    // Verifica se nunca clicou OU se o clique já tem mais de 30 minutos
+    if (!registroClique || (agora - registroClique > tempoExpira)) {
+        
         // --- PRIMEIRO CLIQUE (Publicidade) ---
         const publicidade = "https://rzekl.com/c/1e8d1144946b7f02e05e16525dc3e8/?ulp=https%3A%2F%2Fa.aliexpress.com%2F_EHQU8ay";
         window.open(publicidade, '_blank');
         
-        localStorage.setItem('clique_' + idLivro, Date.now());
+        // Guarda o momento exato do clique
+        localStorage.setItem('clique_' + idLivro, agora);
         atualizarBotaoParaVerde(idLivro);
+
     } else {
         // --- SEGUNDO CLIQUE (Download) ---
-        // Se for link do Drive, o 'window.location.assign' costuma forçar melhor o comportamento de download
-        window.location.assign(urlLivro);
+        
+        // Forçar o download criando um link temporário com atributo download
+        const linkDownload = document.createElement('a');
+        linkDownload.href = urlLivro;
+        
+        // Tenta forçar o download (Funciona melhor em PC, no Mobile pode abrir o PDF)
+        linkDownload.setAttribute('download', idLivro + '.pdf'); 
+        linkDownload.target = '_blank';
+        
+        document.body.appendChild(linkDownload);
+        linkDownload.click();
+        document.body.removeChild(linkDownload);
 
-        // Opcional: remover o comentário abaixo se quiseres que o botão volte a ficar azul após baixar
+        // OPCIONAL: Se queres que o botão volte a ser azul LOGO APÓS o download:
         // localStorage.removeItem('clique_' + idLivro);
     }
 }

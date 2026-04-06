@@ -160,24 +160,16 @@ const biblioteca = [
         missao: "Explorador de Informática",
         autor: "Eng. Jobelson Bandeira",
     },
-    { 
-        id: "", 
-        classe: "", 
-        titulo: "", 
-        img: "img/.jpg", 
-        link: "https://drive.google.com/uc?export=download&id=",
-        missao: "",
-        autor: "",
-    },
-    { 
-        id: "", 
-        classe: "", 
-        titulo: "", 
-        img: "img/.jpg", 
-        link: "https://drive.google.com/uc?export=download&id=",
-        missao: "",
-        autor: "",
-    },
+
+  //  { 
+ //       id: "", 
+//        classe: "", 
+//        titulo: "", 
+//        img: "img/.jpg", 
+//      link: "https://drive.google.com/uc?export=download&id=",
+//        missao: "",
+//        autor: "",
+//   },
     // Podes adicionar mais 100 livros aqui apenas copiando este bloco { ... },
 ];
 function atualizarBotaoParaVerde(idLivro) {

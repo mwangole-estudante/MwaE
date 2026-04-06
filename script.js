@@ -220,8 +220,7 @@ function carregarBiblioteca() {
 `).join('')
 biblioteca.forEach(livro => {
     if (localStorage.getItem('clique_' + livro.id)) {
-        atualizarBotaoParaVerde(livro.id);
-    }
+        atualizarBotaoParaVerde(livro.id);}
 });
 ;
 
@@ -253,7 +252,7 @@ document.getElementById('total-livros').innerText = biblioteca.length;
 // Inicia a função assim que o site carrega
 window.onload = carregarBiblioteca;
 
-//botao para Baixar
+// Botão para Baixar
 function baixarEReencaminhar(urlLivro, idLivro) {
     const jaClicou = localStorage.getItem('clique_' + idLivro);
 
@@ -261,23 +260,15 @@ function baixarEReencaminhar(urlLivro, idLivro) {
         // --- PRIMEIRO CLIQUE (Publicidade) ---
         const publicidade = "https://rzekl.com/c/1e8d1144946b7f02e05e16525dc3e8/?ulp=https%3A%2F%2Fa.aliexpress.com%2F_EHQU8ay";
         window.open(publicidade, '_blank');
+        
         localStorage.setItem('clique_' + idLivro, Date.now());
         atualizarBotaoParaVerde(idLivro);
     } else {
-        // --- SEGUNDO CLIQUE (Download Forçado) ---
-        const linkInvisivel = document.createElement('a');
-        linkInvisivel.href = urlLivro;
-        
-        // O atributo 'download' tenta forçar o download, mas o Drive pode ignorar.
-        // O segredo está no target '_blank' para alguns telemóveis.
-        linkInvisivel.setAttribute('download', ''); 
-        linkInvisivel.target = '_blank'; 
-        
-        document.body.appendChild(linkInvisivel);
-        linkInvisivel.click();
-        document.body.removeChild(linkInvisivel);
+        // --- SEGUNDO CLIQUE (Download) ---
+        // Se for link do Drive, o 'window.location.assign' costuma forçar melhor o comportamento de download
+        window.location.assign(urlLivro);
 
-        // Opcional: Limpar após baixar para ele poder repetir o processo no futuro
+        // Opcional: remover o comentário abaixo se quiseres que o botão volte a ficar azul após baixar
         // localStorage.removeItem('clique_' + idLivro);
     }
 }

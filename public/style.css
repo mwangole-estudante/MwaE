@@ -1,0 +1,382 @@
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #000000;
+    overflow-x: hidden;
+}
+h1, h2{
+  color: #ff0000;
+}
+
+/* Menu */
+header {
+    background-color: #000000;
+    padding: 15px 0;
+    border-bottom: 4px solid #ff0000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 10px 15px;
+    overflow-x:auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+.menu::-webkit-scrollbar {
+  display: none;
+}
+
+.menu li {
+    margin: 0 20px;
+    flex: 0 0 auto;
+}
+
+.menu li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu li a:hover {
+    color: #ff0000;
+}
+
+/* Seções */
+section {
+  display: none;
+    padding: 100px 20px 40px 20px;
+    text-align: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+#inicio {
+  display: block;
+}
+
+section:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Botões */
+button {
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #000000;
+}
+
+.post-card {
+  border: 1px solid #e0e0e0;
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 15px;
+  blackground-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Estilos da Biblioteca */
+#biblioteca {
+    padding: 60px 20px;
+    background-color: #f4f4f4; /* Um cinza claro para destacar do fundo */
+}
+
+.biblioteca-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.biblioteca-header h2 {
+    color: #ff0000; /* Vermelho Mwangolé */
+    font-size: 28px;
+}
+
+.biblioteca-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.livro-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.livro-card:hover {
+    transform: translateY(-5px);
+}
+
+.capa-fake {
+    width: 80px;
+    height: 110px;
+    background: #000;
+    color: #fff;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-left: 5px solid #ff0000;
+}
+
+.btn-baixar {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.btn-baixar:hover {
+    background-color: #cc0000;
+}
+
+/*Rodapé*/
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 40px 20px 20px 20px;
+    border-top: 5px solid #ff0000;
+    margin-top: 50px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h4 {
+    color: #ff0000;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.footer-section a, .footer-section p {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-section a:hover {
+    color: #ff0000;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 12px;
+    color: #888;
+}
+/*aba de pesquisa*/
+/* Estilização da Barra de Pesquisa da Biblioteca */
+.pesquisa-biblioteca {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 500px; /* Não fica demasiado larga em tablets/PC */
+    text-align: center;
+}
+
+#inputPesquisa {
+    width: 90%;
+    max-width: 400px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: 2px solid #ffcc00; /* Cor inicial */
+    border-radius: 25px;    /* Formato arredondado */
+    outline: none;
+    transition: all 0.3s ease; /* Suaviza a mudança de cor */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+#inputPesquisa:focus {
+    border-color: #ffcc00; /* O Amarelo do MwaE quando clicas */
+    box-shadow: 0 4px 10px rgba(255, 204, 0, 0.2);
+    transform: translateY(-2px); /* Pequeno efeito de levitação */
+}
+
+/*capa do livro*/
+/* Estilo para as capas dos livros */
+/* 1. O CARD (O BALDE) */
+.livro-card h3 {
+    font-size: 1.1rem;      /* Diminui o título do livro */
+    margin: 5px 0;
+    line-height: 1.2;       /* Deixa as linhas mais juntinhas */
+}
+
+.livro-card p {
+    font-size: 0.9rem;      /* Diminui o texto da disciplina/classe */
+    color: #666;
+    margin-bottom: 10px;
+}
+.livro-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    width: 180px;                   /* ADICIONA ESTA LINHA: controla a largura */
+    height: 250px;                  /* Ajusta a altura conforme o teu gosto */
+    padding: 15px;
+    background: #fff;               /* Garante que o fundo é branco */
+    border-radius: 10px;            /* Deixa os cantos arredondados */
+    margin: 10px auto;              /* Centraliza o card no ecrã */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Dá um efeito de sombra porreiro */
+    align-items:center
+}
+
+.btn-baixar {
+    width: 60%;
+    padding: 10px;
+    font-size: 0.9rem;
+    margin-top: auto;      /* Mantém o botão no fundo */
+    margin-left: auto;     /* Empurra da esquerda para o centro */
+    margin-right: auto;    /* Empurra da direita para o centro */
+    display: block;        /* Garante que as margens funcionem corretamente */
+}
+.capa-livro {
+    display: block;        /* Garante que a imagem se comporta como um bloco */
+    margin-left: auto;     /* Empurra da esquerda para o centro */
+    margin-right: auto;    /* Empurra da direita para o centro */
+    max-width: 100%; 
+    height: 100px; 
+    object-fit: contain;
+    /*borda para as imagens */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5); 
+    border-radius: 4px;
+}
+/*flqyer no feed(inicio)*/
+.banner-inicio {
+    width: 100%;       /* Ocupa a largura toda do ecrã */
+    height: auto;      /* Mantém a proporção, não achata a imagem */
+    border-radius: 10px; /* Cantos arredondados para ficar moderno */
+    margin-bottom: 15px;
+}
+
+/*botão de up loade, aolicitar e doar*/
+.botoes-atalho {
+    display: flex;
+    justify-content: center; /* Centraliza o grupo */
+    gap: 5px;               /* Espaço pequeno entre eles */
+    padding: 10px;
+    background: #fff;
+}
+
+.btn-atalho {
+    flex: 1;                /* Faz os 3 terem o mesmo tamanho */
+    max-width: 120px;       /* Não deixa ficarem demasiado largos */
+    border: none;
+    border-radius: 8px;
+    padding: 12px 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; /* Ícone em cima, texto em baixo */
+    align-items: center;
+}
+
+/* Cores Diferentes */
+.azul { background-color: #007bff; }
+.laranja { background-color: #fd7e14; }
+.verde { background-color: #28a745; }
+
+.btn-atalho span {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+/* Fundo escuro atrás da janela */
+.modal-fundo {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* A caixa branca do formulário */
+.modal-conteudo {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+}
+
+.fechar {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+#form-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#form-upload input, #form-upload select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-enviar {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 10px;
+}

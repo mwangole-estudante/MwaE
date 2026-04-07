@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta name="verify-admitad" content="6b7f02e05e" >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudante Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Menu de navegação -->
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="#inicio" onclick="mostrarSecao('inicio')">Início</a></li>
+                <li><a href="#cursos" onclick="mostrarSecao('cursos')">Cursos</a></li>
+                <li><a href="#jogo" onclick="mostrarSecao('jogo')">Jogo Educativo</a></li>
+                <li><a href="#loja" onclick="mostrarSecao('loja')">Loja do Estudante</a></li>
+                <li><a href="#" onclick="mostrarSecao('biblioteca')">Biblioteca</a></li>
+                <li><a href="#estatistica" onclick="mostrarSecao('estatistica')">Estatísticas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <a href="https://rzekl.com/c/1e8d1144946b7f02e05e16525dc3e8/?ulp=https%3A%2F%2Fa.aliexpress.com%2F_EHQU8ay" target="_blank">
+        <img src="BANNER_DA_CAMPANHA" alt="Oferta Especial" class="pub-banner">
+    </a>
+
+    <!-- Página Inicial -->
+    <section id="inicio">
+        <h1>Mwangolé Estudante</h1>
+        <h2>Seja bem-vindo ao site do Estudante</h2>
+        <p style="text-align: justify;">Aqui você encontra informações de estudo, publicidade de cursos e muito mais!</p>
+        <p></p>
+        <p style="text-align: justify;">A nossa biblioteca já está, operacional! vai já procurar o teu livro</p>
+    <p>Teu portal de livros gratuitos.</p>
+    <button onclick="mostrarSecao('biblioteca')">Explorar Livros</button>
+    <p></p>
+    <h2>Apoie o Crescimento da Mwangolé Estudante</h2>
+    <p style="text-align: justify;">
+Acreditamos que o acesso ao conhecimento é a ferramenta mais poderosa para o desenvolvimento de Angola. Nossa plataforma oferece livros gratuitos, materiais didáticos e suporte em Ciências para milhares de estudantes.</p>
+
+<p style="text-align: justify;">Para que possamos continuar a expandir nossa biblioteca virtual e manter o site no ar, contamos com a sua generosidade. Qualquer valor faz a diferença!</p>
+<p style="text-align: justify;">Iban: 0006 0000 84606339301 43</p>
+    <img src="img/bdoacao.png" alt="Mwangolé" class="banner-inicio">
+</section>
+
+    <!-- Cursos -->
+    <section id="cursos">
+        <h2>Cursos</h2>
+        <ul>
+            <li>Matemática</li>
+            <li>Português</li>
+            <li>Ciências</li>
+            <li>Informática</li>
+        </ul>
+    </section>
+
+    <!-- Jogo Educativo -->
+    <section id="jogo">
+        <h2>Jogo Educativo</h2>
+        <p>Teste seus conhecimentos com nossos jogos interativos!</p>
+        <button onclick="alert('Jogo em construção!')">Iniciar Jogo</button>
+    </section>
+
+    <!-- Loja do Estudante -->
+    <section id="loja">
+        <h2>Loja do Estudante</h2>
+        <ul>
+            <li>Matérias Didáticas</li>
+            <li>Cadernos</li>
+            <li>Canetas</li>
+            <li>Livros</li>
+        </ul>
+    </section>
+
+    <!-- Estatísticas do usuário -->
+    <section id="estatistica">
+        <h2>Estatísticas do Usuário</h2>
+        <p>Pontos de estudo: <span id="pontos">0</span></p>
+        <button onclick="adicionarPonto()">Adicionar Ponto</button>
+    </section>
+    
+    <!-- Biblioteca-->
+    <section id="biblioteca" style="display: none;">
+    <div class="biblioteca-header">
+        <h2>📚 Biblioteca MwaE</h2>
+        <p>Encontre o seu livro, clica em baixar, veja a publicidade e confirma o download. Nota: se for levado a pagina de visualização(google drive) clica nos 3 pontinhos superior a direita e nescarrega o ficheiro.</p>
+        <p>Atualmente temos <span id="total-livros">0</span> manuais disponíveis.</p>
+        <div class="pesquisa-biblioteca">
+          <form onsubmit="event.preventDefault();">
+            <input type="text" id="inputPesquisa" placeholder="Pesquisar por título, classe ou autor..." enterkeyhint="search">
+        </form>
+    </div>
+    <div class="botoes-atalho">
+    <button class="btn-atalho azul" onclick="abrirModal('upload')">
+        <span>📤</span> Coloca aqui seu livro
+    </button>
+    <button class="btn-atalho laranja" onclick="abrirModal('solicitar')">
+        <span>📝</span> Não achou o livro que quer? peça aqui
+    </button>
+    <button class="btn-atalho verde" onclick="abrirModal('doar')">
+        <span>❤️</span> Doar
+    </button>
+</div>
+    </div>
+
+ <div id="lista-de-livros" class="biblioteca-grid"></div>
+ 
+ 
+</section>
+    <!-- Rodapé -->
+    <footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Siga-nos</h4>
+            <div class="social-links">
+                <a href="https://www.facebook.com/MwangoleEstudante" target="_blank">Facebook: Mwangolé Estudante</a>
+                <a href="https://www.tiktok.com/@mwangole.estudante" target="_blank">TikTok</a>
+                <a href="https://www.instagram.com/mwangole.estudante?igsh=MWUyMzMxbnlrMzZvcw==" target="_blank">Instagram</a>
+                <a href="https://www.youtube.com/@MwangoléEstudante" target="_blank">YouTube</a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h4>Contactos</h4>
+            <a href="https://wa.me/244938063174" target="_blank">WhatsApp: (+244) 938063174</a>
+            <p>E-mail: mwangoleestudante@gmail.com</p>
+            <p>Tel: (+244) 938063174</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Mwangolé Estudante. Todos os direitos reservados. Laurindo Cambundile</p>
+    </div>
+</footer>
+<!--formulario do up load-->
+<div id="modal-upload" class="modal-fundo" style="display: none;">
+    <div class="modal-conteudo">
+        <span class="fechar" onclick="fecharModal()">&times;</span>
+        <h2>Partilhar Livro 📚</h2>
+        
+        <form id="form-upload">
+            <label>Título do Livro:</label>
+            <input type="text" id="titulo" placeholder="Ex: Manual de Matemática" required>
+
+            <label>Autor:</label>
+            <input type="text" id="autor" placeholder="Ex: Ministério da Educação" required>
+
+            <label>Classe ou Género:</label>
+            <select id="classe">
+                <option value="10">10ª Classe</option>
+                <option value="11">11ª Classe</option>
+                <option value="12">12ª Classe</option>
+                <option value="universitario">Universitário</option>
+                <option value="outro">Outro</option>
+            </select>
+
+            <label>Escolher Ficheiro (PDF):</label>
+            <input type="file" id="ficheiro-livro" accept=".pdf" required>
+
+            <button type="submit" class="btn-enviar">Enviar para Biblioteca</button>
+        </form>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

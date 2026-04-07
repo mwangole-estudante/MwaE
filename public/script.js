@@ -309,3 +309,27 @@ window.onclick = function(event) {
         fecharModal();
     }
 }
+// Função para desenhar os livros no ecrã
+function renderizarLivros(lista) {
+    const container = document.getElementById('lista-livros');
+    if (!container) return;
+
+    container.innerHTML = ''; // Limpa o feed antes de colocar novos
+
+    lista.forEach(livro => {
+        const card = document.createElement('div');
+        card.className = 'livro-card';
+        
+        card.innerHTML = `
+            <div class="livro-capa">
+                <img src="${livro.capa || 'https://via.placeholder.com/150x200?text=Sem+Capa'}" 
+                     alt="${livro.titulo}" 
+                     style="width:100%; height:100%; object-fit:cover; border-radius:5px;">
+            </div>
+            <p class="livro-titulo">${livro.titulo}</p>
+            <p class="livro-autor">${livro.autor}</p>
+        `;
+        
+        container.appendChild(card);
+    });
+}capa 

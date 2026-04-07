@@ -129,19 +129,6 @@ button:hover {
     transform: translateY(-5px);
 }
 
-.capa-fake {
-    width: 80px;
-    height: 110px;
-    background: #000;
-    color: #fff;
-    margin: 0 auto 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    border-left: 5px solid #ff0000;
-}
-
 .btn-baixar {
     display: inline-block;
     margin-top: 15px;
@@ -379,4 +366,60 @@ footer {
     border-radius: 8px;
     font-weight: bold;
     margin-top: 10px;
+}
+/*embelezamento e organizacao dos livros*/
+.feed-container {
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.feed-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.grid-livros {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Ajusta ao tamanho do ecrã */
+    gap: 15px;
+}
+
+/* Estilo de cada Cartão de Livro */
+.livro-card {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+}
+
+.livro-capa {
+    width: 100%;
+    height: 150px;
+    background-color: #ddd; /* Cinza enquanto não tem capa real */
+    border-radius: 5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.livro-titulo {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #333;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Corta o texto se for muito longo */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.livro-autor {
+    font-size: 0.75rem;
+    color: #777;
 }

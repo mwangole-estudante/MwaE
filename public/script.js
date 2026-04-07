@@ -309,27 +309,32 @@ window.onclick = function(event) {
         fecharModal();
     }
 }
-// Função para desenhar os livros no ecrã
-function renderizarLivros(lista) {
+
+// Função para o Feed (Livros Recentes)
+function renderizarFeed() {
     const container = document.getElementById('lista-livros');
     if (!container) return;
 
-    container.innerHTML = ''; // Limpa o feed antes de colocar novos
+    container.innerHTML = ''; 
+    // Pega os últimos 4 livros da tua lista "biblioteca"
+    const recentes = biblioteca.slice(-2).reverse(); 
 
-    lista.forEach(livro => {
-        const card = document.createElement('div');
-        card.className = 'livro-card';
-        
-        card.innerHTML = `
-            <div class="livro-capa">
-                <img src="${livro.capa || 'https://via.placeholder.com/150x200?text=Sem+Capa'}" 
-                     alt="${livro.titulo}" 
-                     style="width:100%; height:100%; object-fit:cover; border-radius:5px;">
+    recentes.forEach(livro => {
+        container.innerHTML += `
+            <div class="livro-card">
+                <div class="livro-capa">
+                    <img src="${livro.img}" style="width:100%; height:100%; object-fit:cover; border-radius:5px;">
+                </div>
+                <p class="livro-titulo"><strong>${livro.titulo}</strong></p>
+                <p class="livro-autor">${livro.autor}</p>
             </div>
-            <p class="livro-titulo">${livro.titulo}</p>
-            <p class="livro-autor">${livro.autor}</p>
         `;
-        
-        container.appendChild(card);
     });
-}capa 
+}
+
+// INICIALIZAÇÃO ÚNICA
+window.onload = function() {
+    carregarBiblioteca(); // Desenha a lista de baixo (com botão de baixar)
+    renderizarFeed();     // Desenha o feed de cima
+    console.log("✅ Sistema Mwangolé carregado com sucesso!");
+};

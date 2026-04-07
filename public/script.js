@@ -338,3 +338,37 @@ window.onload = function() {
     renderizarFeed();     // Desenha o feed de cima
     console.log("✅ Sistema Mwangolé carregado com sucesso!");
 };
+// Configuração do formulário para enviar via WhatsApp
+const formUpload = document.getElementById('form-upload');
+
+if (formUpload) {
+    formUpload.addEventListener('submit', function(e) {
+        e.preventDefault(); // Impede o recarregamento da página
+
+        // Pega os dados que o aluno preencheu
+        const titulo = document.getElementById('titulo').value;
+        const autor = document.getElementById('autor').value;
+        const classe = document.getElementById('classe').value;
+
+        // Teu número de WhatsApp (formato internacional sem o +)
+        const meuWhatsapp = "244938063174"; 
+
+        // Monta a mensagem formatada
+        const mensagem = `Olá Laurindo! Gostaria de partilhar um livro para a Biblioteca MwaE:%0A%0A` +
+                         `📚 *Título:* ${titulo}%0A` +
+                         `✍️ *Autor:* ${autor}%0A` +
+                         `🎓 *Classe/Gênero:* ${classe}%0A%0A` +
+                         `_Vou enviar o PDF em anexo agora mesmo._`;
+
+        // Cria o link do WhatsApp
+        const url = `https://wa.me/244938063174${meuWhatsapp}?text=${mensagem}`;
+
+        // Abre o WhatsApp numa nova aba
+        window.open(url, '_blank');
+
+        // Fecha o modal e limpa o formulário
+        fecharModal();
+        formUpload.reset();
+        alert("Boa! Agora envia o PDF no chat do WhatsApp que abriu.");
+    });
+}

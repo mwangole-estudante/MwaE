@@ -185,7 +185,7 @@ function atualizarBotaoParaVerde(idLivro) {
 // 2. MOTOR DE RENDERIZAÇÃO (Lógica)
 // ========================================
 function carregarBiblioteca() {
-    const contentor = document.getElementById('lista-de-livros');
+    const contentor = document.getElementById('lista-livros');
     
     if (!contentor) return;
 
@@ -225,31 +225,34 @@ biblioteca.forEach(livro => {
 // Seleciona a barra de pesquisa
 const barraPesquisa = document.getElementById('inputPesquisa');
 
-barraPesquisa.addEventListener('input', function() {
-    const termoBusca = barraPesquisa.value.toLowerCase().trim();
-    const livros = document.querySelectorAll('.livro-card');
+if (barraPesquisa) {
 
-    livros.forEach(livro => {
-        // Puxamos todas as informações das etiquetas que criaste
-        const titulo = livro.getAttribute('data-titulo').toLowerCase();
-        const classe = livro.getAttribute('data-classe').toLowerCase();
-        const autor  = livro.getAttribute('data-autor').toLowerCase();
-        
-        // Juntamos tudo para o filtro procurar em qualquer uma delas
-        const informacaoCompleta = `${titulo} ${classe} ${autor}`;
+    barraPesquisa.addEventListener('input', function() {
 
-        if (informacaoCompleta.includes(termoBusca)) {
-            livro.style.display = "flex"; // Mostra o livro
-        } else {
-            livro.style.display = "none";  // Esconde o livro
-        }
+        const termoBusca = this.value.toLowerCase().trim();
+        const livros = document.querySelectorAll('.livro-card');
+
+        livros.forEach(livro => {
+
+            const titulo = livro.dataset.titulo.toLowerCase();
+            const classe = livro.dataset.classe.toLowerCase();
+            const autor = livro.dataset.autor.toLowerCase();
+
+            const texto = titulo + " " + classe + " " + autor;
+
+            if (texto.includes(termoBusca)) {
+                livro.style.display = "";
+            } else {
+                livro.style.display = "none";
+            }
+
+        });
+
     });
-});
+
+}
 document.getElementById('total-livros').innerText = biblioteca.length;
 }
-
-// Inicia a função assim que o site carrega
-window.onload = carregarBiblioteca;
 
 // Botão para Baixar
 function baixarEReencaminhar(urlLivro, idLivro) {
@@ -332,43 +335,67 @@ function renderizarFeed() {
     });
 }
 
-// INICIALIZAÇÃO ÚNICA
-window.onload = function() {
-    carregarBiblioteca(); // Desenha a lista de baixo (com botão de baixar)
-    renderizarFeed();     // Desenha o feed de cima
-    console.log("✅ Sistema Mwangolé carregado com sucesso!");
-};
-// Configuração do formulário para enviar via WhatsApp
+// 1. Configuração do formulário para enviar via Servidor/Cloudinary
 const formUpload = document.getElementById('form-upload');
 
 if (formUpload) {
-    formUpload.addEventListener('submit', function(e) {
-        e.preventDefault(); // Impede o recarregamento da página
+    formUpload.addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-        // Pega os dados que o aluno preencheu
-        const titulo = document.getElementById('titulo').value;
-        const autor = document.getElementById('autor').value;
-        const classe = document.getElementById('classe').value;
+        // Criar o "pacote" com o ficheiro e os dados (Título, Autor, Ficheiro)
+        const formData = new FormData(formUpload);
+        
+        const btn = e.target.querySelector('.btn-enviar');
+        btn.innerText = "A carregar livro... ⏳";
+        btn.disabled = true;
 
-        // Teu número de WhatsApp (formato internacional sem o +)
-        const meuWhatsapp = "244938063174"; 
+        try {
+            // Envia para o teu server.js que está rodando no Termux
+            // E altera para o endereço completo:
+        const resposta = await fetch('/upload', {
+    method: 'POST',
+    body: formData
+});
 
-        // Monta a mensagem formatada
-        const mensagem = `Olá Laurindo! Gostaria de partilhar um livro para a Biblioteca MwaE:%0A%0A` +
-                         `📚 *Título:* ${titulo}%0A` +
-                         `✍️ *Autor:* ${autor}%0A` +
-                         `🎓 *Classe/Gênero:* ${classe}%0A%0A` +
-                         `_Vou enviar o PDF em anexo agora mesmo._`;
+            // Se o servidor responder com erro, o JSON não será válido, disparando o catch
+            const resultado = await resposta.json();
 
-        // Cria o link do WhatsApp
-        const url = `https://wa.me/244938063174${meuWhatsapp}?text=${mensagem}`;
-
-        // Abre o WhatsApp numa nova aba
-        window.open(url, '_blank');
-
-        // Fecha o modal e limpa o formulário
-        fecharModal();
-        formUpload.reset();
-        alert("Boa! Agora envia o PDF no chat do WhatsApp que abriu.");
+            if (resultado.url) {
+                alert("Sucesso! O livro foi recebido.");
+                console.log("Link gerado pelo Cloudinary:", resultado.url);
+                
+                // Opcional: Avisar no WhatsApp que o upload terminou
+                const titulo = document.getElementById('titulo').value;
+                window.open(`https://wa.me/244938063174?text=Olá! Fiz o upload do livro: ${titulo}. O link é: ${resultado.url}`, '_blank');
+                
+                fecharModal();
+                formUpload.reset();
+            }
+        } catch (erro) {
+            console.error("Erro no envio:", erro);
+            alert("Erro detectado: Verifique se o servidor no Termux está ligado.");
+        } finally {
+            btn.innerText = "Enviar para Biblioteca";
+            btn.disabled = false;
+        }
     });
 }
+// Forçar recarregamento da biblioteca quando a seção for mostrada
+const mostrarSecaoOriginal = mostrarSecao;
+window.mostrarSecao = function(id) {
+    mostrarSecaoOriginal(id);
+    if (id === 'biblioteca') {
+        // Pequeno delay para garantir que o DOM está pronto
+        setTimeout(() => {
+            if (typeof carregarBiblioteca === 'function') {
+                carregarBiblioteca();
+            }
+        }, 50);
+    }
+};
+// 2. INICIALIZAÇÃO ÚNICA (Executa quando a página abre)
+window.onload = function() {
+    carregarBiblioteca(); 
+    renderizarFeed();     
+    console.log("✅ Sistema Mwangolé carregado com sucesso!");
+};

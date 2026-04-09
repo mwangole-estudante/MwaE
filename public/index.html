@@ -4,7 +4,7 @@
   <meta name="verify-admitad" content="6b7f02e05e" >
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudante Online</title>
+    <title>Mwangolé Estudante</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
                 <li><a href="#cursos" onclick="mostrarSecao('cursos')">Cursos</a></li>
                 <li><a href="#jogo" onclick="mostrarSecao('jogo')">Jogo Educativo</a></li>
                 <li><a href="#loja" onclick="mostrarSecao('loja')">Loja do Estudante</a></li>
-                <li><a href="#" onclick="mostrarSecao('biblioteca')">Biblioteca</a></li>
+                <li><a href="#biblioteca" onclick="mostrarSecao('biblioteca')">Biblioteca</a></li>
                 <li><a href="#estatistica" onclick="mostrarSecao('estatistica')">Estatísticas</a></li>
             </ul>
         </nav>
@@ -30,6 +30,7 @@
     <section id="inicio">
         <h1>Mwangolé Estudante</h1>
         <h2>Seja bem-vindo ao site do Estudante</h2>
+        <button onclick="console.log('JS ok'); alert('Funciona!')">Teste JS</button>
         <p style="text-align: justify;">Aqui você encontra informações de estudo, publicidade de cursos e muito mais!</p>
         <p></p>
         <p style="text-align: justify;">A nossa biblioteca já está, operacional! vai já procurar o teu livro</p>
@@ -81,40 +82,41 @@ Acreditamos que o acesso ao conhecimento é a ferramenta mais poderosa para o de
         <button onclick="adicionarPonto()">Adicionar Ponto</button>
     </section>
     
-    <!-- Biblioteca-->
-    <section id="biblioteca" style="display: none;">
+<!-- Biblioteca-->
+<section id="biblioteca" style="display: none;">
     <div class="biblioteca-header">
         <h2>📚 Biblioteca MwaE</h2>
         <p>Encontre o seu livro, clica em baixar, veja a publicidade e confirma o download. Nota: se for levado a pagina de visualização(google drive) clica nos 3 pontinhos superior a direita e nescarrega o ficheiro.</p>
         <p>Atualmente temos <span id="total-livros">0</span> manuais disponíveis.</p>
         <div class="pesquisa-biblioteca">
-          <form onsubmit="event.preventDefault();">
-            <input type="text" id="inputPesquisa" placeholder="Pesquisar por título, classe ou autor..." enterkeyhint="search">
-        </form>
-    </div>
-    <!--botoes adicionados abaixo da abba de pesquisa-->
-    <div class="botoes-atalho">
-    <button class="btn-atalho azul" onclick="abrirModal('upload')">
-        <span>📤</span> Coloca aqui seu livro
-    </button>
-    <button class="btn-atalho laranja" onclick="abrirModal('solicitar')">
-        <span>📝</span> Não achou o livro que quer? peça aqui
-    </button>
-    <button class="btn-atalho verde" onclick="abrirModal('doar')">
-        <span>❤️</span> Doar
-    </button>
-</div>
-    </div>
- 
- <div class="feed-container">
-    <div class="feed-cabecalho">
-        <h3>📚 Livros Recentes</h3>
-        <span class="filtro-texto">Todos os gêneros</span>
+            <form onsubmit="event.preventDefault();">
+                <input type="text" id="inputPesquisa" placeholder="Pesquisar por título, classe ou autor..." enterkeyhint="search">
+            </form>
+        </div>
+        <!--botoes adicionados abaixo da aba de pesquisa-->
+        <div class="botoes-atalho">
+            <button class="btn-atalho azul" onclick="abrirModal('upload')">
+                <span>📤</span> Coloca aqui seu livro
+            </button>
+            <button class="btn-atalho laranja" onclick="abrirModal('solicitar')">
+                <span>📝</span> Não achou o livro que quer? peça aqui
+            </button>
+            <button class="btn-atalho verde" onclick="abrirModal('doar')">
+                <span>❤️</span> Doar
+            </button>
+        </div>
     </div>
 
-    <div id="lista-livros" class="grid-livros"></div> <hr>
-        <div id="lista-de-livros" class="biblioteca-grid"></div> </div>
- 
+    <div class="feed-container">
+        <div class="feed-cabecalho">
+            <h3>📚 Livros Recentes</h3>
+            <span class="filtro-texto">Todos os gêneros</span>
+        </div>
+
+        <!-- APENAS UMA div com id="lista-livros" - REMOVI A DUPLICADA -->
+        <div id="lista-livros" class="grid-livros"></div>
+        <hr>
+    </div>
 </section>
     <!-- Rodapé -->
     <footer>
@@ -155,6 +157,15 @@ Acreditamos que o acesso ao conhecimento é a ferramenta mais poderosa para o de
 
             <label>Classe ou Género:</label>
             <select id="classe">
+                <option value="1">1ª Classe</option>
+                <option value="2">2ª Classe</option>
+                <option value="3">3ª Classe</option>
+                <option value="4">4ª Classe</option>
+                <option value="5">5ª Classe</option>
+                <option value="6">6ª Classe</option>
+                <option value="7">7ª Classe</option>
+                <option value="8">8ª Classe</option>
+                <option value="9">9ª Classe</option>
                 <option value="10">10ª Classe</option>
                 <option value="11">11ª Classe</option>
                 <option value="12">12ª Classe</option>
@@ -163,7 +174,7 @@ Acreditamos que o acesso ao conhecimento é a ferramenta mais poderosa para o de
             </select>
 
             <label>Escolher Ficheiro (PDF):</label>
-            <input type="file" id="ficheiro-livro" accept=".pdf" required>
+            <input type="file" id="ficheiro-livro" name="ficheiro-livro" accept=".pdf" required>
 
             <button type="submit" class="btn-enviar">Enviar para Biblioteca</button>
         </form>

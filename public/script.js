@@ -313,28 +313,6 @@ window.onclick = function(event) {
     }
 }
 
-// Função para o Feed (Livros Recentes)
-function renderizarFeed() {
-    const container = document.getElementById('lista-livros');
-    if (!container) return;
-
-    container.innerHTML = ''; 
-    // Pega os últimos 4 livros da tua lista "biblioteca"
-    const recentes = biblioteca.slice(-2).reverse(); 
-
-    recentes.forEach(livro => {
-        container.innerHTML += `
-            <div class="livro-card">
-                <div class="livro-capa">
-                    <img src="${livro.img}" style="width:100%; height:100%; object-fit:cover; border-radius:5px;">
-                </div>
-                <p class="livro-titulo"><strong>${livro.titulo}</strong></p>
-                <p class="livro-autor">${livro.autor}</p>
-            </div>
-        `;
-    });
-}
-
 // 1. Configuração do formulário para enviar via Servidor/Cloudinary
 const formUpload = document.getElementById('form-upload');
 
@@ -396,6 +374,5 @@ window.mostrarSecao = function(id) {
 // 2. INICIALIZAÇÃO ÚNICA (Executa quando a página abre)
 window.onload = function() {
     carregarBiblioteca(); 
-    renderizarFeed();     
     console.log("✅ Sistema Mwangolé carregado com sucesso!");
 };

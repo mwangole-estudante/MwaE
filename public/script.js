@@ -321,7 +321,11 @@ if (formUpload) {
         e.preventDefault();
 
         // Criar o "pacote" com o ficheiro e os dados (Título, Autor, Ficheiro)
-        const formData = new FormData(formUpload);
+        const formData = new FormData();
+formData.append('titulo', document.getElementById('titulo').value);
+formData.append('autor', document.getElementById('autor').value);
+formData.append('classe', document.getElementById('classe').value);
+formData.append('ficheiro-livro', document.getElementById('ficheiro-livro').files[0]);
         
         const btn = e.target.querySelector('.btn-enviar');
         btn.innerText = "A carregar livro... ⏳";

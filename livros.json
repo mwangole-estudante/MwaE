@@ -120,30 +120,21 @@
     "autor": "Eng. Jobelson Bandeira"
   },
   {
-    "id": "1775935873599",
-    "titulo": "7 Hábitos de pessoas altamente eficazes",
-    "autor": "Stephen R. Covey",
-    "classe": "1",
-    "img": "img/padrao.jpg",
-    "link": "https://res.cloudinary.com/detigt0kt/image/upload/v1775935873/biblioteca_mwae/1775935863995-os-7-habitos-das-pessoas-altamente-eficazes_compress.pdf",
-    "missao": "Contribuidor"
-  },
-  {
-    "id": "1775966893706",
-    "titulo": "A nova psicologia do sucesso",
-    "autor": "Carol S. Dweck, ph.D.",
-    "classe": "1",
-    "img": "https://res.cloudinary.com/detigt0kt/image/upload/w_200,h_300,c_fill/v1775966893/biblioteca_mwae/1775966888648-Mindset-A-Nova-Psicologia-do-Sucesso-Carol-Dweck1.pdf.pdf.jpg",
-    "link": "https://res.cloudinary.com/detigt0kt/image/upload/v1775966893/biblioteca_mwae/1775966888648-Mindset-A-Nova-Psicologia-do-Sucesso-Carol-Dweck1.pdf.pdf",
-    "missao": "Contribuidor"
-  },
-  {
     "id": "1775993350282",
     "titulo": "Língua Portuguesa",
     "autor": "São Tomé e Príncipe",
-    "classe": "1",
+    "classe": "1ª Classe",
     "img": "https://res.cloudinary.com/detigt0kt/image/upload/c_fill,h_300,w_200/pg_1/v1/biblioteca_mwae/1775993305528-Manual%20Escolar%20e%20Caderno%20de%20Actividades_%201%C3%82%C2%AA%20classe..jpg?_a=BAMAOGM50",
     "link": "https://res.cloudinary.com/detigt0kt/image/upload/v1775993350/biblioteca_mwae/1775993305528-Manual%20Escolar%20e%20Caderno%20de%20Actividades_%201%C3%82%C2%AA%20classe..pdf",
+    "missao": "Contribuidor"
+  },
+  {
+    "id": "1776020490827",
+    "titulo": "Funções e gráficos- exercício",
+    "autor": "São Tomé e Príncipe",
+    "classe": "8ª Classe",
+    "img": "https://res.cloudinary.com/detigt0kt/image/upload/c_fill,h_300,w_200/pg_1/v1/biblioteca_mwae/1776020484406-%C3%83%C2%81lgebra%20e%20Fun%C3%83%C2%A7%C3%83%C2%B5es%20(tarefas%20com%20gr%C3%83%C2%A1ficos%20para%209%C3%82%C2%AA%2C%2010%C3%82%C2%AA%2C%2011%C3%82%C2%AA%20e%2012%C3%82%C2%AA%20classes)..jpg?_a=BAMAOGM50",
+    "link": "https://res.cloudinary.com/detigt0kt/image/upload/v1776020491/biblioteca_mwae/1776020484406-%C3%83%C2%81lgebra%20e%20Fun%C3%83%C2%A7%C3%83%C2%B5es%20%28tarefas%20com%20gr%C3%83%C2%A1ficos%20para%209%C3%82%C2%AA%2C%2010%C3%82%C2%AA%2C%2011%C3%82%C2%AA%20e%2012%C3%82%C2%AA%20classes%29..pdf",
     "missao": "Contribuidor"
   }
 ]

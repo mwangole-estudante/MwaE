@@ -189,7 +189,9 @@ if (formUpload) {
         const formData = new FormData();
 formData.append('titulo', document.getElementById('titulo').value);
 formData.append('autor', document.getElementById('autor').value);
-formData.append('classe', document.getElementById('classe').value);
+const selectClasse = document.getElementById('classe');
+const textoClasse = selectClasse.options[selectClasse.selectedIndex].text;
+formData.append('classe', textoClasse);;
 formData.append('ficheiro-livro', document.getElementById('ficheiro-livro').files[0]);
         
         const btn = e.target.querySelector('.btn-enviar');

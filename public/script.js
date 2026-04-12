@@ -206,6 +206,7 @@ formData.append('ficheiro-livro', document.getElementById('ficheiro-livro').file
 
             // Se o servidor responder com erro, o JSON não será válido, disparando o catch
             const resultado = await resposta.json();
+            console.log('Resposta do servidor:', resultado);
 
             if (resultado.url) {
                 alert("Sucesso! O livro foi recebido.");
@@ -220,9 +221,11 @@ formData.append('ficheiro-livro', document.getElementById('ficheiro-livro').file
                 carregarLivrosDoServidor();
             }
         } catch (erro) {
-            console.error("Erro no envio:", erro);
-            alert("Erro detectado: Verifique se o servidor no Termux está ligado.");
-        } finally {
+        console.error("Erro no envio:", erro);
+        let msg = "Erro detectado. Verifique o servidor.";
+        if (erro.message) msg = erro.message;
+        alert(msg);
+} finally {
             btn.innerText = "Enviar para Biblioteca";
             btn.disabled = false;
         }
@@ -236,7 +239,7 @@ window.mostrarSecao = function(id) {
         // Pequeno delay para garantir que o DOM está pronto
         setTimeout(() => {
             if (typeof carregarBiblioteca === 'function') {
-                carregaraLivrosDoServidor();
+                carregarLivrosDoServidor();
             }
         }, 50);
     }

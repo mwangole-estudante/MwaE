@@ -129,12 +129,21 @@
     "missao": "Contribuidor"
   },
   {
-    "id": "1775965404930",
-    "titulo": "A cabra Marcada para Morrer",
-    "autor": "ROGÉRIO DE ALMEIDA",
-    "classe": "outro",
-    "img": "https://res.cloudinary.com/detigt0kt/image/upload/w_200,h_300,c_fill/v1775965404/biblioteca_mwae/1775965387864-Livro%2BCABRA.pdf.jpg",
-    "link": "https://res.cloudinary.com/detigt0kt/image/upload/v1775965404/biblioteca_mwae/1775965387864-Livro%2BCABRA.pdf",
+    "id": "1775966893706",
+    "titulo": "A nova psicologia do sucesso",
+    "autor": "Carol S. Dweck, ph.D.",
+    "classe": "1",
+    "img": "https://res.cloudinary.com/detigt0kt/image/upload/w_200,h_300,c_fill/v1775966893/biblioteca_mwae/1775966888648-Mindset-A-Nova-Psicologia-do-Sucesso-Carol-Dweck1.pdf.pdf.jpg",
+    "link": "https://res.cloudinary.com/detigt0kt/image/upload/v1775966893/biblioteca_mwae/1775966888648-Mindset-A-Nova-Psicologia-do-Sucesso-Carol-Dweck1.pdf.pdf",
+    "missao": "Contribuidor"
+  },
+  {
+    "id": "1775993350282",
+    "titulo": "Língua Portuguesa",
+    "autor": "São Tomé e Príncipe",
+    "classe": "1",
+    "img": "https://res.cloudinary.com/detigt0kt/image/upload/c_fill,h_300,w_200/pg_1/v1/biblioteca_mwae/1775993305528-Manual%20Escolar%20e%20Caderno%20de%20Actividades_%201%C3%82%C2%AA%20classe..jpg?_a=BAMAOGM50",
+    "link": "https://res.cloudinary.com/detigt0kt/image/upload/v1775993350/biblioteca_mwae/1775993305528-Manual%20Escolar%20e%20Caderno%20de%20Actividades_%201%C3%82%C2%AA%20classe..pdf",
     "missao": "Contribuidor"
   }
 ]

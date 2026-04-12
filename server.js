@@ -149,9 +149,16 @@ app.post('/upload', uploadLimiter, upload.single('ficheiro-livro'), (req, res) =
     if (!req.file) {
         return res.status(400).json({ erro: 'Nenhum arquivo enviado' });
     }
-    
-        // Criar objeto do novo livro
-    const novaCapa = req.file.path.replace('/upload/', '/upload/w_200,h_300,c_fill/') + '.jpg';
+    // Gerar URL da capa usando a própria API do Cloudinary
+const publicId = req.file.filename; // obtém o ID público do ficheiro
+const novaCapa = cloudinary.url(publicId, {
+    transformation: [
+        { width: 200, height: 300, crop: 'fill' },
+        { page: 1 }                  // extrai a primeira página
+    ],
+    format: 'jpg'
+});
+console.log('📸 URL da capa gerada:', novaCapa);
     const novoLivro = {
         id: Date.now().toString(),
         titulo: titulo,
